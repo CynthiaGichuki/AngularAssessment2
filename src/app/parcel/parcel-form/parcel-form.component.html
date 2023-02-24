@@ -1,0 +1,65 @@
+
+<h2>Enter Details Below:</h2>
+<div class="maincontainer">
+    <div class="content">
+        <div class="imgDiv">
+            <img
+                src="https://cdn.techjockey.com/blog/wp-content/uploads/2018/12/13172658/Top-10-Courier-Management-Software-in-India-2022_feature.jpg">
+
+        </div>
+
+        <div class="formDiv">
+            <form class="form" [formGroup]="form" (ngSubmit)="addDestination()">
+
+                <div formGroupName="personalDetails">
+
+                    <div class="form-group">
+                        <label for="fullname">Full Name:</label>
+                        <input type="text" name="fullname" formControlName="fullname">
+                        <span class="error" *ngIf="!form.get('fullname')?.valid && form.get('fullname')?.touched">Please
+                            Enter a Valid Name</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" required formControlName="email">
+                        <span class="error" *ngIf="!form.get('email')?.valid && form.get('email')?.touched">
+                            <span class="error" *ngIf="form.get('email')!.errors!['required']">Please Input an
+                                Email</span>
+                            <span class="error" *ngIf="form.get('email')!.errors!['email']">Please Enter a Valid
+                                Email</span>
+                        </span>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="destination">Destination:</label>
+                    <select name="destination" formControlName="destination">
+                        <option value="default">Select a destination that fits you</option>
+                        <option value="dubai">Dubai</option>
+                        <option value="maldives">Maldives</option>
+                        <option value="seychelles">Seychelles</option>
+                        <option value="egypt">Egypt</option>
+                        <option value="paris">Paris</option>
+                        <option value="cuba">Cuba</option>
+                    </select>
+                    <span class="error" *ngIf="!form.get('destination')?.valid && form.get('destination')?.touched">Please Enter a
+                        Valid Destination</span>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <button type="submit" class="add" [disabled]="!form.valid"
+                        [ngClass]="{invalid:!form.valid, valid:form.valid}">ADD DESTINATION</button>
+
+                   
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
